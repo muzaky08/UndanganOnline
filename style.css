@@ -1,0 +1,177 @@
+/* Custom Utilities */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #c9c9c9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6a6b5e;
+    border-radius: 10px;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+    background: rgba(227, 181, 181, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    box-shadow: 0 8px 32px 0 rgba(183, 110, 121, 0.10);
+}
+
+/* Parallax / fixed background on mobile override */
+@media (max-width: 768px) {
+    .bg-parallax {
+        background-attachment: scroll;
+    }
+}
+
+/* Music disc spin animation */
+@keyframes spinDisc {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#music-icon.spinning {
+    animation: spinDisc 3s linear infinite;
+}
+
+/* Float input label animation */
+.float-input-group {
+    position: relative;
+}
+
+.float-input-group input,
+.float-input-group textarea,
+.float-input-group select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid #d1d5db;
+    padding: 12px 0 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+    color: #3a0202;
+}
+
+.float-input-group input:focus,
+.float-input-group textarea:focus,
+.float-input-group select:focus {
+    border-color: rgb(179, 148, 148);
+}
+
+/* Floating Wishes Animation */
+@keyframes floatDown {
+    0% {
+        transform: translateY(-20vh) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(10vh) scale(1);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) scale(1.1);
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    0% { transform: translateX(-25px); }
+    100% { transform: translateX(25px); }
+}
+
+.float-wish {
+    animation-name: floatDown;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-duration: 5s;
+}
+
+.float-wish-inner {
+    animation: sway 2s ease-in-out infinite alternate;
+}
+
+/* Water drop shape */
+.water-drop-shape {
+    position: absolute;
+    inset: 0;
+    /* Membuat bentuk tetesan air mengarah ke atas */
+    border-radius: 50% 0 50% 50%;
+    transform: rotate(-45deg);
+    background: rgba(245, 230, 232, 0.95); /* Cream / secondary theme color */
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.7), 0 8px 25px rgba(183, 110, 121, 0.2);
+    z-index: 0;
+    border: 1px solid rgba(183, 110, 121, 0.2);
+}
+
+/* Dark mode support for water drop */
+.dark .water-drop-shape {
+    background: rgba(40, 40, 40, 0.85); /* Dark background */
+    backdrop-filter: blur(12px);
+    box-shadow: inset 0 0 20px rgba(183, 110, 121, 0.15), 0 8px 25px rgba(0,0,0,0.6);
+    border: 1px solid rgba(183, 110, 121, 0.4); /* Pink / primary border */
+}
+
+/* Flip Card Animation Classes */
+.perspective-1000 {
+    perspective: 1000px;
+}
+.transform-style-3d {
+    transform-style: preserve-3d;
+}
+.backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+    transform: rotateY(180deg);
+}
+.group:hover .group-hover\:rotate-y-180 {
+    transform: rotateY(180deg);
+}
+
+.water-drop-shine::after {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    width: 25%;
+    height: 25%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10;
+}
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
